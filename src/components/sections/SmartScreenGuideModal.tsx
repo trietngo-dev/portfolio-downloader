@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ShieldAlert, CheckCircle, Info, ShieldCheck, Sparkles } from 'lucide-react';
 import { soundFx } from '../../utils/sound';
@@ -9,6 +9,17 @@ interface SmartScreenGuideModalProps {
 }
 
 export const SmartScreenGuideModal: React.FC<SmartScreenGuideModalProps> = ({ isOpen, onClose }) => {
+  // Lock body scrolling when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
@@ -23,7 +34,7 @@ export const SmartScreenGuideModal: React.FC<SmartScreenGuideModalProps> = ({ is
             soundFx.playPop();
             onClose();
           }}
-          className="fixed inset-0 bg-dopamine-dark/60 backdrop-blur-sm"
+          className="fixed inset-0 bg-dopamine-dark/70 backdrop-blur-md"
         />
 
         {/* Modal Window */}

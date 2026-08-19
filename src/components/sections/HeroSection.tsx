@@ -88,7 +88,7 @@ export const HeroSection: React.FC = () => {
 
               {/* GitHub Releases link */}
               <a
-                href="https://github.com/ngophantriet"
+                href="https://github.com/trietngo-dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 onMouseEnter={() => soundFx.playHover()}
