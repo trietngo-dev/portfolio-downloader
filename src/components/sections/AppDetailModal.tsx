@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Download, ShieldCheck, CheckCircle2, Copy, Check, Terminal, ExternalLink, Cpu } from 'lucide-react';
 import { GithubIcon } from '../common/Icons';
@@ -52,9 +53,9 @@ export const AppDetailModal: React.FC<AppDetailModalProps> = ({ app, onClose, on
     }, 600);
   };
 
-  return (
+  const modalContent = (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-hidden">
+      <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 overflow-hidden">
         {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -64,7 +65,7 @@ export const AppDetailModal: React.FC<AppDetailModalProps> = ({ app, onClose, on
             soundFx.playPop();
             onClose();
           }}
-          className="fixed inset-0 bg-dopamine-dark/70 backdrop-blur-md"
+          className="fixed inset-0 bg-dopamine-dark/75 backdrop-blur-md"
         />
 
         {/* Modal Window */}
@@ -98,7 +99,7 @@ export const AppDetailModal: React.FC<AppDetailModalProps> = ({ app, onClose, on
 
           {/* Modal Scrollable Body */}
           <div className="p-6 sm:p-8 overflow-y-auto space-y-6">
-
+            
             {/* Header info */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b-2 border-neutral-100">
               <div>
@@ -230,6 +231,20 @@ export const AppDetailModal: React.FC<AppDetailModalProps> = ({ app, onClose, on
 
           {/* Modal Footer Actions */}
           <div className="p-4 sm:p-6 bg-neutral-50 border-t-2 border-dopamine-dark flex flex-wrap items-center justify-between gap-4 shrink-0">
+            {app.githubUrl && (
+              <a
+                href={app.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => soundFx.playClick()}
+                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-neutral-700 hover:text-dopamine-dark"
+              >
+                <GithubIcon className="w-4 h-4" />
+                <span>Xem GitHub Release</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            )}
+
             <div className="flex items-center gap-3 ml-auto">
               <button
                 onClick={onClose}
@@ -261,4 +276,6 @@ export const AppDetailModal: React.FC<AppDetailModalProps> = ({ app, onClose, on
       </div>
     </AnimatePresence>
   );
+
+  return typeof document !== 'undefined' ? createPortal(modalContent, document.body) : null;
 };

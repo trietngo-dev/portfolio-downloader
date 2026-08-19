@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ShieldAlert, CheckCircle, Info, ShieldCheck, Sparkles } from 'lucide-react';
 import { soundFx } from '../../utils/sound';
@@ -22,9 +23,9 @@ export const SmartScreenGuideModal: React.FC<SmartScreenGuideModalProps> = ({ is
 
   if (!isOpen) return null;
 
-  return (
+  const modalContent = (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-hidden">
+      <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 overflow-hidden">
         {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -34,7 +35,7 @@ export const SmartScreenGuideModal: React.FC<SmartScreenGuideModalProps> = ({ is
             soundFx.playPop();
             onClose();
           }}
-          className="fixed inset-0 bg-dopamine-dark/70 backdrop-blur-md"
+          className="fixed inset-0 bg-dopamine-dark/75 backdrop-blur-md"
         />
 
         {/* Modal Window */}
@@ -68,7 +69,7 @@ export const SmartScreenGuideModal: React.FC<SmartScreenGuideModalProps> = ({ is
           </div>
 
           {/* Content */}
-          <div className="p-6 sm:p-8 space-y-5">
+          <div className="p-6 sm:p-8 space-y-5 overflow-y-auto">
             {/* Why message */}
             <div className="p-4 rounded-2xl bg-dopamine-sky/50 border-2 border-dopamine-blue/20 flex items-start gap-3">
               <Info className="w-5 h-5 text-dopamine-blue shrink-0 mt-0.5" />
@@ -112,7 +113,7 @@ export const SmartScreenGuideModal: React.FC<SmartScreenGuideModalProps> = ({ is
           </div>
 
           {/* Footer */}
-          <div className="p-4 bg-neutral-50 border-t-2 border-dopamine-dark flex justify-end">
+          <div className="p-4 bg-neutral-50 border-t-2 border-dopamine-dark flex justify-end shrink-0">
             <button
               onClick={() => {
                 soundFx.playClick();
@@ -127,4 +128,6 @@ export const SmartScreenGuideModal: React.FC<SmartScreenGuideModalProps> = ({ is
       </div>
     </AnimatePresence>
   );
+
+  return typeof document !== 'undefined' ? createPortal(modalContent, document.body) : null;
 };
