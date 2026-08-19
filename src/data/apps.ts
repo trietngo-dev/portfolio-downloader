@@ -123,5 +123,49 @@ Các phân hệ chính:
     accentColor: 'blue', // Màu thẻ: 'coral' | 'blue' | 'yellow' | 'mint' | 'lilac' | 'pink'
     iconType: 'spark',   // Icon: 'zap' | 'terminal' | 'palette' | 'shield' | 'game' | 'spark'
     isFeatured: true,    // Gắn huy hiệu 'Nổi bật'
+  },
+  {
+    id: 'my-todo',
+    title: 'My-Todo — Minimalist Todo & Reminder',
+    tagline: 'Ứng dụng quản lý công việc và nhắc nhở tối giản, thông minh, lưu trữ SQLite bền vững',
+    version: 'v1.0.0',
+    releaseDate: '2026-08-19',
+    size: '78.96 MB',
+    category: 'Utility', // 'Utility' | 'DevTools' | 'Games' | 'Automation'
+    tags: ['Electron', 'React + Vite', 'TypeScript', 'SQLite', 'Tailwind CSS', 'Framer Motion'],
+    os: 'Windows 10 / 11 (64-bit)',
+    downloadUrl: 'https://github.com/trietngo-dev/my-todo-app/releases/download/untagged-6b9ba10ed021e97dc6e5/My-Todo-Setup-1.0.0.exe',
+    githubUrl: 'https://github.com/ngophantriet/My-Todo-MT',
+    checksumSha256: 'da4799a81276a2a3797e1658ee261c0353396622e0af6b292be4d4a547651e1e',
+    shortDescription: 'Ứng dụng ghi chú và quản lý công việc theo phong cách Minimalist, hỗ trợ đặt lịch theo khung giờ, nhắc nhở đa kênh (chuông báo, popup Windows, bot Telegram khi tắt app) và lưu trữ SQLite an toàn.',
+    fullDescription: 'My-Todo là ứng dụng quản lý công việc cá nhân hiện đại, kết hợp giữa triết lý thiết kế tối giản (Minimalist) và hệ thống nhắc việc thông minh. Ứng dụng cho phép bạn lên lịch chi tiết theo từng khung giờ trong ngày, theo dõi theo dòng thời gian hoặc lịch tháng (Calendar View), tích hợp âm thanh chuông báo Web Audio, thông báo Windows và bot Telegram. Dữ liệu được lưu trữ tự động trong SQLite Database cục bộ trên máy (%APPDATA%), đảm bảo an toàn, riêng tư và bảo mật tuyệt đối.',
+    features: [
+      'Quản lý Task linh hoạt: Lên lịch theo ngày, khung giờ cụ thể (HH:mm), mức độ ưu tiên, danh mục màu sắc và checklist việc con',
+      'Hệ thống Nhắc nhở đa kênh: Chuông báo Web Audio, popup Windows Notification và gửi tin nhắn Telegram Bot khi tắt ứng dụng',
+      'Giao diện Minimalist tinh tế: Hỗ trợ Dark/Light Mode, chuyển động mượt mà với Framer Motion và pháo hoa ăn mừng khi hoàn thành mọi việc',
+      'Chế độ xem trực quan: Dòng thời gian trong ngày (Sáng/Chiều/Tối), Lịch tháng (Calendar View), Quá hạn và Đã hoàn thành',
+      'Lưu trữ SQLite Zero-Setup: Tự động lưu vĩnh viễn trong %APPDATA%, hỗ trợ Xuất/Nhập dữ liệu dự phòng JSON 1-click'
+    ],
+    systemRequirements: {
+      os: 'Windows 10 / 11 (64-bit)',
+      ram: '2 GB RAM',
+      storage: '250 MB dung lượng trống',
+      architecture: 'x64'
+    },
+    changelog: [
+      {
+        version: 'v1.0.0',
+        date: '2026-08-19',
+        notes: [
+          'Phiên bản đầu tiên phát hành chính thức',
+          'Đầy đủ tính năng quản lý công việc theo khung giờ và lịch tháng',
+          'Tích hợp thông báo Desktop, âm thanh chuông báo và Telegram Bot',
+          'Hỗ trợ lưu trữ SQLite bền vững và đóng gói bộ cài đặt Windows NSIS'
+        ]
+      }
+    ],
+    accentColor: 'blue', // 'coral' | 'blue' | 'yellow' | 'mint' | 'lilac' | 'pink'
+    iconType: 'zap',      // 'zap' | 'terminal' | 'palette' | 'shield' | 'game' | 'spark'
+    isFeatured: true,
   }
 ];
